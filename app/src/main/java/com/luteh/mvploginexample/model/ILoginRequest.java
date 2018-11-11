@@ -5,8 +5,14 @@ package com.luteh.mvploginexample.model;
  * Email luthfanmaftuh@gmail.com
  */
 public interface ILoginRequest {
+    /**
+     * return email value as a string
+     */
     String getEmail();
 
+    /**
+     * return password value as a string
+     **/
     String getPassword();
 
     /**

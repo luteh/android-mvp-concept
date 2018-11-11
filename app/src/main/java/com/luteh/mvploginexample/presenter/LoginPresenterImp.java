@@ -47,18 +47,4 @@ public class LoginPresenterImp implements ILoginPresenter {
                 break;
         }
     }
-
-    /*@Override
-    public boolean isValidLogin(CharSequence username, CharSequence password) {
-        ILoginView.clearError();
-        if (TextUtils.isEmpty(username)) {
-            ILoginView.onEmailError("Username is invalid!");
-            return false;
-        }
-        if (TextUtils.isEmpty(password)) {
-            ILoginView.onPasswordError("Password is invalid!");
-            return false;
-        }
-        return true;
-    }*/
 }

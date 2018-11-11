@@ -13,12 +13,4 @@ public interface ILoginPresenter {
      * @param password the password
      */
     void submitLogin(String email, String password);
-
-//    /**
-//     * validate the input fields of login form
-//     *
-//     * @param username the username
-//     * @param password the password
-//     *
-//    boolean isValidLogin(CharSequence username, CharSequence password);*/
 }
