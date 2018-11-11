@@ -1,4 +1,4 @@
-package com.luteh.mvploginexample.ui.login;
+package com.luteh.mvploginexample;
 
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
@@ -6,23 +6,24 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.luteh.mvploginexample.R;
-import com.luteh.mvploginexample.model.LoginRequest;
+import com.luteh.mvploginexample.presenter.ILoginPresenter;
+import com.luteh.mvploginexample.presenter.LoginPresenterImp;
+import com.luteh.mvploginexample.view.ILoginView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class LoginActivity extends AppCompatActivity implements LoginView {
+public class LoginActivity extends AppCompatActivity implements ILoginView {
 
-    private LoginPresenter loginPresenter;
+    private ILoginPresenter ILoginPresenter;
 
-    @BindView(R.id.etLoginUsername)
-    TextInputEditText etLoginUsername;
+    @BindView(R.id.etLoginEmail)
+    TextInputEditText etLoginEmail;
     @BindView(R.id.etLoginPassword)
     TextInputEditText etLoginPassword;
-    @BindView(R.id.tilLoginUsername)
-    TextInputLayout tilLoginUsername;
+    @BindView(R.id.tilLoginEmail)
+    TextInputLayout tilLoginEmail;
     @BindView(R.id.tilLoginPassword)
     TextInputLayout tilLoginPassword;
 
@@ -32,14 +33,12 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
 
-        loginPresenter = new LoginPresenterImp(this);
+        ILoginPresenter = new LoginPresenterImp(this);
     }
 
     @OnClick(R.id.btnSubmitLogin)
     protected void submitLogin() {
-        if (loginPresenter.isValidLogin(etLoginUsername.getText(), etLoginPassword.getText())) {
-            loginPresenter.submitLogin(new LoginRequest(etLoginUsername.getText().toString(), etLoginPassword.getText().toString()));
-        }
+        ILoginPresenter.submitLogin(etLoginEmail.getText().toString(), etLoginPassword.getText().toString());
     }
 
     @Override
@@ -53,8 +52,8 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     }
 
     @Override
-    public void onUsernameError(String message) {
-        tilLoginUsername.setError(message);
+    public void onEmailError(String message) {
+        tilLoginEmail.setError(message);
     }
 
     @Override
@@ -64,7 +63,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     @Override
     public void clearError() {
-        tilLoginUsername.setError(null);
+        tilLoginEmail.setError(null);
         tilLoginPassword.setError(null);
     }
 }

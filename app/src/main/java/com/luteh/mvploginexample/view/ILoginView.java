@@ -1,10 +1,10 @@
-package com.luteh.mvploginexample.ui.login;
+package com.luteh.mvploginexample.view;
 
 /**
  * Created by Luthfan Maftuh on 11/11/2018.
  * Email luthfanmaftuh@gmail.com
  */
-public interface LoginView {
+public interface ILoginView {
     /**
      * Login success
      **/
@@ -20,7 +20,7 @@ public interface LoginView {
      *
      * @param message the error message
      */
-    void onUsernameError(String message);
+    void onEmailError(String message);
 
     /**
      * Show the password error message
